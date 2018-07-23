@@ -38,7 +38,6 @@ function(yoda_external_package)
   # set the install path to bundle project install dir
   set(ARG_CMAKE_ARGS ${ARG_CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>)
 
-  # C++ protobuf
   if(ARG_GIT_REPOSITORY)
     yoda_clone_repository(NAME serialbox2 URL ${ARG_GIT_REPOSITORY} BRANCH ${ARG_GIT_TAG} SOURCE_DIR source_dir )
     ExternalProject_Add(serialbox2
