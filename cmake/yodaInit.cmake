@@ -45,7 +45,12 @@ function(yoda_init)
   make_config_string("Platform" ${YODA_PLATFORM_STRING})
   make_config_string("Architecture" ${YODA_ARCHITECTURE_STRING})
   make_config_string("Compiler" ${YODA_COMPILER_STRING})
-  make_config_string("Build type" ${CMAKE_BUILD_TYPE})
+  # CMAKE_BUILD_TYPE can be empty
+  if(${CMAKE_BUILD_TYPE})
+    make_config_string("Build type" ${CMAKE_BUILD_TYPE})
+  else()
+    make_config_string("Build type" "")
+  endif()
   yoda_report_result("Configuration summary" ${config_info})
 
 endfunction()
