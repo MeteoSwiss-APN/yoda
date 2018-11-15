@@ -28,13 +28,13 @@
 if( NOT GRIDTOOLS_FOUND )
 
   find_path( GRIDTOOLS_INCLUDE_DIR 
-             NAMES gridtools.hpp
+             NAMES stencil-composition.hpp
              PATHS 
                 ${CMAKE_INSTALL_PREFIX}
                 "${GRIDTOOLS_PATH}"
                 "${GRIDTOOLS_ROOT}"
                 ENV GRIDTOOLS_PATH 
-            PATH_SUFFIXES include/gridtools
+            PATH_SUFFIXES include/gridtools/stencil-composition/
   )
 
   include(FindPackageHandleStandardArgs)
@@ -46,6 +46,6 @@ if( NOT GRIDTOOLS_FOUND )
   mark_as_advanced( GRIDTOOLS_INCLUDE_DIRS GRIDTOOLS_LIBRARIES )
 
   set( GridTools_FOUND ${GRIDTOOLS_FOUND} )
-  set( GRIDTOOLS_INCLUDE_DIRS ${GRIDTOOLS_INCLUDE_DIR}/..)
+  set( GRIDTOOLS_INCLUDE_DIRS ${GRIDTOOLS_INCLUDE_DIR}/../..)
 endif()
 
