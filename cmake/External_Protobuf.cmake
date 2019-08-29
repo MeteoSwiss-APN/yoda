@@ -82,6 +82,7 @@ function(yoda_external_package)
     protobuf python-build
     COMMAND ${BASH_EXECUTABLE} ${install_script}
     DEPENDEES build
+    DEPENDERS install
   )
   ExternalProject_Add_Step(
     protobuf post-build
