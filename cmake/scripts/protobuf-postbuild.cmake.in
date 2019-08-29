@@ -18,4 +18,7 @@ if(NOT(EXISTS @_PROTOBUF_INSTALL_DIR_@/lib/cmake/protobuf))
 
 endif()
 
+if(EXISTS @_PROTOBUF_SOURCE_DIR_@/python)
+  file(COPY @_PROTOBUF_SOURCE_DIR_@/python DESTINATION @_PROTOBUF_INSTALL_DIR_@/ PATTERN *)
+endif()
 
