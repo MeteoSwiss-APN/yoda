@@ -1,6 +1,6 @@
 ##===-------------------------------------------------------------------------------------------===##
 ##
-##  This file is distributed under the MIT License (MIT). 
+##  This file is distributed under the MIT License (MIT).
 ##  See LICENSE.txt for details.
 ##
 ##===------------------------------------------------------------------------------------------===##
@@ -9,7 +9,7 @@ include(ExternalProject)
 include(yodaSetExternalProperties)
 include (yodaRequireArg)
 
-set(DIR_OF_PROTO_EXTERNAL ${CMAKE_CURRENT_LIST_DIR})  
+set(DIR_OF_PROTO_EXTERNAL ${CMAKE_CURRENT_LIST_DIR})
 
 function(yoda_external_package)
   set(options)
@@ -27,16 +27,18 @@ function(yoda_external_package)
 
   set(cmake_args
     ${ARG_CMAKE_ARGS}
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG -fPIC"
     -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
-    -DBUILD_SHARED_LIBS=ON                                                         
+    -DBUILD_SHARED_LIBS=OFF
     -Dprotobuf_BUILD_EXAMPLES=OFF
-    -Dprotobuf_BUILD_SHARED_LIBS=ON
+    -Dprotobuf_BUILD_SHARED_LIBS=OFF
     -Dprotobuf_BUILD_TESTS=OFF
     -Dprotobuf_INSTALL_EXAMPLES=OFF
   )
 
-  yoda_set_external_properties(NAME "protobuf" 
-    INSTALL_DIR install_dir 
+  yoda_set_external_properties(NAME "protobuf"
+    INSTALL_DIR install_dir
     SOURCE_DIR source_dir)
 
   # Python protobuf
@@ -56,7 +58,7 @@ function(yoda_external_package)
   set(install_script "${CMAKE_CURRENT_BINARY_DIR}/protobuf_python_install_script.sh")
   configure_file(${install_script_in} ${install_script} @ONLY)
 
- 
+
   set(_PROTOBUF_INSTALL_DIR_ ${install_dir})
   set(_PROTOBUF_SOURCE_DIR_ ${CMAKE_BINARY_DIR}/protobuf-prefix/src/protobuf)
   include(yodaGetScriptDir)
@@ -67,7 +69,7 @@ function(yoda_external_package)
 
   # Configure the script
   configure_file(${post_build_input_script} ${post_build_output_script} @ONLY)
- 
+
 
   # C++ protobuf
   ExternalProject_Add(protobuf
