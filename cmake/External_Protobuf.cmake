@@ -27,14 +27,14 @@ function(yoda_external_package)
 
   set(cmake_args
     ${ARG_CMAKE_ARGS}
-    -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG -fPIC"
-    -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
-    -DBUILD_SHARED_LIBS=OFF
-    -Dprotobuf_BUILD_EXAMPLES=OFF
-    -Dprotobuf_BUILD_SHARED_LIBS=OFF
-    -Dprotobuf_BUILD_TESTS=OFF
-    -Dprotobuf_INSTALL_EXAMPLES=OFF
+    "-DCMAKE_BUILD_TYPE=Release"
+    "-DCMAKE_CXX_FLAGS_RELEASE=-O3 -DNDEBUG -fPIC"
+    "-DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>"
+    "-DBUILD_SHARED_LIBS=OFF"
+    "-Dprotobuf_BUILD_EXAMPLES=OFF"
+    "-Dprotobuf_BUILD_SHARED_LIBS=OFF"
+    "-Dprotobuf_BUILD_TESTS=OFF"
+    "-Dprotobuf_INSTALL_EXAMPLES=OFF"
   )
 
   yoda_set_external_properties(NAME "protobuf"
