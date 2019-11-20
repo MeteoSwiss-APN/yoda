@@ -60,10 +60,8 @@ if(LLVM_FOUND AND LLVM_LIBRARY_DIRS)
   # Find a clang library
   macro(find_clang_lib libname)
     string(TOUPPER ${libname} prettylibname)
-    if(NOT(DEFINED CLANG_${prettylibname}_LIB))
-      find_library(CLANG_${prettylibname}_LIB NAMES ${libname} HINTS ${LLVM_LIBRARY_DIRS})
-      mark_as_advanced(CLANG_${prettylibname}_LIB)
-    endif()    
+    find_library(CLANG_${prettylibname}_LIB NAMES ${libname} HINTS ${LLVM_LIBRARY_DIRS})
+    mark_as_advanced(CLANG_${prettylibname}_LIB)
   endmacro()
   
   # Add a clang library to CLANG_LIBS and resolve dependencies
